@@ -814,6 +814,15 @@
                 
                 <div class="share-section">
                     <h3 class="share-title">Share Your Color ✨</h3>
+                    
+                    <!--Generate Share Image Button -->
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <button class="research-btn" onclick="generateShareImage()" style="background: linear-gradient(135deg, #E60BAC, #C06C84); font-size: 1.2rem; padding: 18px 40px;">
+                            💗 Create Share Image
+                        </button>
+                        <p style="font-size: 0.9rem; color: #6c757d; margin-top: 10px;">Generate a beautiful image perfect for Instagram Stories!</p>
+                    </div>
+                    
                     <div class="social-icons">
                         <a href="#" class="social-icon instagram" onclick="shareInstagram(); return false;" title="Share on Instagram">
                             <i class="fab fa-instagram"></i>
@@ -1147,6 +1156,133 @@
         
         // ⚠️ IMPORTANT: UPDATE THIS URL AFTER DEPLOYMENT
         const WEBSITE_URL = 'https://prachigpt113-gif.github.io/2025-color-calculator/'; 
+        // Generate Share Image - Opens in new tab
+        function generateShareImage() {
+            const color = window.currentColor;
+            
+            // Create HTML for share image
+            const shareHTML = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My 2025 Color - ${color.name}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 1080px;
+            height: 1920px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1B4D3E 0%, #2D6A4F 50%, #40916C 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 80px 40px;
+        }
+        .heart-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin: 0 auto 60px;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));
+        }
+        .heart {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: ${color.hex};
+            transform: rotate(-45deg);
+            border-radius: 50% 50% 0 50%;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        .heart::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: ${color.hex};
+            border-radius: 50%;
+            top: -50%;
+            left: 0;
+        }
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: ${color.hex};
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.05); }
+        }
+        .color-name {
+            font-size: 5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .year-text {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 80px;
+        }
+        .url {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+            background: rgba(0,0,0,0.2);
+            padding: 20px 40px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .instructions {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            padding: 30px 50px;
+            border-radius: 20px;
+            font-size: 2rem;
+            color: #1B4D3E;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        <div class="color-name">"${color.name}"</div>
+        <div class="year-text">My 2025 ✨</div>
+        <div class="url">prachigpt113-gif.github.io/2025-color-calculator</div>
+    </div>
+    <div class="instructions">
+        📸 Right-click and "Save image as..." or take a screenshot!<br>
+        Perfect for Instagram Stories! 💗
+    </div>
+</body>
+</html>`;
+            
+            // Open in new window
+            const shareWindow = window.open('', '_blank', 'width=1080,height=1920');
+            shareWindow.document.write(shareHTML);
+            shareWindow.document.close();
+        }
         
         // Social sharing functions
         function shareInstagram() {
@@ -1186,6 +1322,7 @@
 </body>
 
 </html>
+
 
 
 
