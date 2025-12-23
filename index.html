@@ -1146,11 +1146,11 @@
         });
         
         // ⚠️ IMPORTANT: UPDATE THIS URL AFTER DEPLOYMENT
-        const WEBSITE_URL = 'YOUR_WEBSITE_URL'; // Replace with your actual URL after deploying
+        const WEBSITE_URL = 'https://prachigpt113-gif.github.io/2025-color-calculator/'; 
         
         // Social sharing functions
         function shareInstagram() {
-            const text = `My 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" ✨\n\nDiscover yours at: ${https://prachigpt113-gif.github.io/2025-color-calculator/}`;
+            const text = `My 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" ✨\n\nDiscover yours at: ${WEBSITE_URL}`;
             
             navigator.clipboard.writeText(text).then(() => {
                 alert('✨ Text copied to clipboard!\n\nPaste it in your Instagram story or post!\n\nTip: Screenshot your color result for a beautiful story! 📸');
@@ -1166,19 +1166,19 @@
         }
         
         function shareWhatsApp() {
-            const text = `My 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" ✨\n\nDiscover your color: ${https://prachigpt113-gif.github.io/2025-color-calculator/}`;
+            const text = `My 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" ✨\n\nDiscover your color: https://prachigpt113-gif.github.io/2025-color-calculator/`;
             const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
         
         function shareLinkedIn() {
             const text = `Just discovered my 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" through this data-driven color psychology calculator!`;
-            const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(https://prachigpt113-gif.github.io/2025-color-calculator/)}`;
+            const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(WEBSITE_URL)}`;
             window.open(shareUrl, '_blank', 'width=600,height=600');
         }
         
         function shareTwitter() {
-            const text = `My 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" ✨\n\nFind your color: $https://prachigpt113-gif.github.io/2025-color-calculator/}`;
+            const text = `My 2025 color: ${window.currentColor.hex} "${window.currentColor.name}" ✨\n\nFind your color: ${WEBSITE_URL}`;
             const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank', 'width=600,height=400');
         }
@@ -1186,6 +1186,7 @@
 </body>
 
 </html>
+
 
 
 
