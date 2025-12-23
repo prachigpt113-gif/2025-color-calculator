@@ -1156,7 +1156,7 @@
         
         // ⚠️ IMPORTANT: UPDATE THIS URL AFTER DEPLOYMENT
         const WEBSITE_URL = 'https://prachigpt113-gif.github.io/2025-color-calculator/'; 
-        // Generate Share Image - MOBILE OPTIMIZED VERSION
+        // Generate Share Image - FIXED HEART SHAPE
         function generateShareImage() {
             const color = window.currentColor;
             
@@ -1187,6 +1187,8 @@
             width: 90%;
             text-align: center;
             box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
         }
         .header {
             font-size: 2rem;
@@ -1194,45 +1196,19 @@
             color: #1B4D3E;
             margin-bottom: 40px;
         }
-        .heart-container {
-            position: relative;
+        /* SIMPLE CIRCLE instead of heart */
+        .color-circle {
             width: 250px;
             height: 250px;
             margin: 0 auto 40px;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
-        }
-        .heart {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: ${color.hex};
-            transform: rotate(-45deg);
-            border-radius: 50% 50% 0 50%;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-        .heart::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: ${color.hex};
             border-radius: 50%;
-            top: -50%;
-            left: 0;
-        }
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
             background: ${color.hex};
-            border-radius: 50%;
-            top: 0;
-            left: 50%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: pulse 2s ease-in-out infinite;
         }
-        @keyframes heartbeat {
-            0%, 100% { transform: rotate(-45deg) scale(1); }
-            50% { transform: rotate(-45deg) scale(1.08); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
         }
         .color-name {
             font-size: 2.5rem;
@@ -1289,6 +1265,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             max-width: 90%;
             font-weight: 600;
+            z-index: 2;
         }
         @media (max-width: 600px) {
             .share-card { 
@@ -1297,7 +1274,7 @@
                 border-radius: 30px;
             }
             .header { font-size: 1.6rem; margin-bottom: 30px; }
-            .heart-container { width: 200px; height: 200px; margin-bottom: 30px; }
+            .color-circle { width: 200px; height: 200px; margin-bottom: 30px; }
             .color-name { font-size: 2rem; }
             .hex-code { font-size: 1.5rem; }
             .year-text { font-size: 1.6rem; }
@@ -1310,9 +1287,7 @@
     <div class="share-card">
         <div class="header">My 2025 Color ✨</div>
         
-        <div class="heart-container">
-            <div class="heart"></div>
-        </div>
+        <div class="color-circle"></div>
         
         <div class="color-name">"${color.name}"</div>
         <div class="hex-code">${color.hex}</div>
@@ -1376,6 +1351,7 @@
 </body>
 
 </html>
+
 
 
 
