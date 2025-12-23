@@ -818,7 +818,7 @@
                     <!--Generate Share Image Button -->
                     <div style="text-align: center; margin-bottom: 25px;">
                         <button class="research-btn" onclick="generateShareImage()" style="background: linear-gradient(135deg, #E60BAC, #C06C84); font-size: 1.2rem; padding: 18px 40px;">
-                            💗 Create Share Image
+                            Create Share Image
                         </button>
                         <p style="font-size: 0.9rem; color: #6c757d; margin-top: 10px;">Generate a beautiful image perfect for Instagram Stories!</p>
                     </div>
@@ -1156,11 +1156,10 @@
         
         // ⚠️ IMPORTANT: UPDATE THIS URL AFTER DEPLOYMENT
         const WEBSITE_URL = 'https://prachigpt113-gif.github.io/2025-color-calculator/'; 
-        // Generate Share Image - Opens in new tab
+        // Generate Share Image - MOBILE OPTIMIZED VERSION
         function generateShareImage() {
             const color = window.currentColor;
             
-            // Create HTML for share image
             const shareHTML = `
 <!DOCTYPE html>
 <html>
@@ -1170,9 +1169,9 @@
     <title>My 2025 Color - ${color.name}</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            width: 1080px;
-            height: 1920px;
+        html, body {
+            width: 100%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1180,16 +1179,27 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             overflow: hidden;
         }
-        .container {
+        .share-card {
+            background: white;
+            border-radius: 40px;
+            padding: 60px 40px;
+            max-width: 500px;
+            width: 90%;
             text-align: center;
-            padding: 80px 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        .header {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1B4D3E;
+            margin-bottom: 40px;
         }
         .heart-container {
             position: relative;
-            width: 600px;
-            height: 600px;
-            margin: 0 auto 60px;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 40px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
         }
         .heart {
             position: absolute;
@@ -1222,64 +1232,108 @@
         }
         @keyframes heartbeat {
             0%, 100% { transform: rotate(-45deg) scale(1); }
-            50% { transform: rotate(-45deg) scale(1.05); }
+            50% { transform: rotate(-45deg) scale(1.08); }
         }
         .color-name {
-            font-size: 5rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            color: white;
-            margin-bottom: 40px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            color: #1B4D3E;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .hex-code {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: ${color.hex};
+            margin-bottom: 30px;
+            font-family: 'Courier New', monospace;
         }
         .year-text {
-            font-size: 3.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 80px;
+            background: linear-gradient(135deg, #1B4D3E, #2D6A4F, #40916C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+        }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #1B4D3E, #40916C);
+            margin: 30px auto;
+            border-radius: 2px;
         }
         .url {
-            font-size: 2.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: rgba(255,255,255,0.85);
-            background: rgba(0,0,0,0.2);
-            padding: 20px 40px;
-            border-radius: 20px;
-            display: inline-block;
+            color: #2D6A4F;
+            word-break: break-all;
+            line-height: 1.5;
+        }
+        .footer-emoji {
+            font-size: 2rem;
+            margin-top: 20px;
         }
         .instructions {
             position: fixed;
-            bottom: 40px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255,255,255,0.95);
-            padding: 30px 50px;
+            padding: 15px 25px;
             border-radius: 20px;
-            font-size: 2rem;
+            font-size: 0.95rem;
             color: #1B4D3E;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 90%;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .share-card { 
+                padding: 50px 30px; 
+                width: 95%;
+                border-radius: 30px;
+            }
+            .header { font-size: 1.6rem; margin-bottom: 30px; }
+            .heart-container { width: 200px; height: 200px; margin-bottom: 30px; }
+            .color-name { font-size: 2rem; }
+            .hex-code { font-size: 1.5rem; }
+            .year-text { font-size: 1.6rem; }
+            .url { font-size: 1rem; }
+            .instructions { font-size: 0.85rem; padding: 12px 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="share-card">
+        <div class="header">My 2025 Color ✨</div>
+        
         <div class="heart-container">
             <div class="heart"></div>
         </div>
+        
         <div class="color-name">"${color.name}"</div>
-        <div class="year-text">My 2025 ✨</div>
+        <div class="hex-code">${color.hex}</div>
+        
+        <div class="divider"></div>
+        
+        <div class="year-text">My 2025</div>
+        
         <div class="url">prachigpt113-gif.github.io/2025-color-calculator</div>
+        
+        <div class="footer-emoji">💗</div>
     </div>
+    
     <div class="instructions">
-        📸 Right-click and "Save image as..." or take a screenshot!<br>
-        Perfect for Instagram Stories! 💗
+        📸 Long-press (mobile) or Right-click (desktop) to save!<br>
+        Perfect for sharing! 💚
     </div>
 </body>
 </html>`;
             
-            // Open in new window
-            const shareWindow = window.open('', '_blank', 'width=1080,height=1920');
+            const shareWindow = window.open('', '_blank');
             shareWindow.document.write(shareHTML);
             shareWindow.document.close();
         }
@@ -1322,6 +1376,7 @@
 </body>
 
 </html>
+
 
 
 
